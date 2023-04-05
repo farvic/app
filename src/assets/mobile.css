@@ -1,0 +1,42 @@
+#toggle {
+    display: none;
+}
+
+#collapse.collapse.show {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    padding: 2rem;
+}
+
+#collapse.collapse.show .nav-link {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+#collapse.collapse.show .navbar-nav {
+    text-align: center;
+}
+
+/* style={"width": "980px", "height": "611px"}, */
+
+#dashboard {    
+    height: 200px;
+    width: 90%;
+}
+
+@media (min-width: 768px) {
+    /* .content {
+      margin-left: 16rem;
+      padding: 2rem,
+    } */
+
+    #dashboard {
+      /* height: 400px; */
+      height: 611px;
+      width: 980px;
+    }
+  }
