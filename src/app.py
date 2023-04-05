@@ -49,11 +49,11 @@ dashboard = html.Iframe(
 )
 
 
-def new_card(title, description, screenshot_urls, technology_icons):
+def new_card(title, description, source_code, play, screenshot_urls, technology_icons):
     return dbc.Card(
         [
             dbc.CardImg(
-                src="https://via.placeholder.com/300x200.png?text=Image+1", top=True),
+                src=screenshot_urls[0], top=True, style={"height": "200px", "width": "100%", "object-fit": "cover"}),
             dbc.CardBody(
                 [
                     html.H4(title, className="card-title"),
@@ -64,11 +64,19 @@ def new_card(title, description, screenshot_urls, technology_icons):
                     dbc.Button(
                         html.I(className="bi bi-github 2x",
                                children=" Source Code"),
-                        href="https://github.com/farvic",
+                        href=f"https://github.com/farvic/{source_code}",
                         external_link=True,
                         target="_blank",
                         className="mr-1",
                     ),
+                    dbc.Button(
+                        html.I(className="bi bi-joystick 2x",
+                               children=" Play"),
+                        href=f"https://farvic.github.io/{source_code}",
+                        external_link=True,
+                        target="_blank",
+                        className="mx-3 btn btn-success",
+                    ) if play else None,
                     html.Div(
                         className="project-technologies",
                         children=[
@@ -145,33 +153,39 @@ projects_section = html.Div(
                                     ],
                                     align="start", className="mb-5",),
                                 html.P(
-                                    "Here are some more projects I've worked on recently. Click on the images to see the full project."),
+                                    "Here are some more projects I've worked on. This section is under construction, so please check back later for more projects!"),
                                 dbc.Row(
                                     children=[
                                         dbc.Col(
-                                            new_card(title='Project 1', description='Coming soon...',
-                                                     screenshot_urls=['https://via.placeholder.com/300x200.png?text=Image+1',
-                                                                      'https://via.placeholder.com/300x200.png?text=Image+2'],
+                                            new_card(title='Handwashing analysis', description='Dr. Semmelweis and the discovery of handwashing in medicine.',
+                                                     screenshot_urls=[
+                                                         'assets/plot.png'],
+                                                     play=False,
+                                                     source_code='',
                                                      technology_icons=[
                                                          'https://img.shields.io/badge/Python-white?logo=Python', 'https://img.shields.io/badge/Jupyter-white?logo=Jupyter']),
                                             xs=12, sm=6, md=4, lg=2
                                         ),
                                         dbc.Col(
-                                            new_card(title='Project 2', description='This is a description of project 2',
-                                                     screenshot_urls=['https://via.placeholder.com/300x200.png?text=Image+3',
-                                                                      'https://via.placeholder.com/300x200.png?text=Image+2'],
+                                            new_card(title='Mosquito Game', description='Kill the Mosquitoes! A simple game made with Javascript.',
+                                                     screenshot_urls=[
+                                                         'assets/mosquito.png'],
+                                                     play=True,
+                                                     source_code='mosquito-game',
                                                      technology_icons=[
-                                                         'https://img.shields.io/badge/Python-white?logo=Python', 'https://img.shields.io/badge/Jupyter-white?logo=Jupyter']),
+                                                         'https://img.shields.io/badge/Javascript-black?logo=Javascript', 'https://img.shields.io/badge/HTML5-white?logo=HTML5', 'https://img.shields.io/badge/CSS3-blue?logo=CSS3']),
                                             xs=12, sm=6, md=4, lg=2
                                         ),
-                                        dbc.Col(
-                                            new_card(title='Project 3', description='This is a description of project 3',
-                                                     screenshot_urls=['https://via.placeholder.com/300x200.png?text=Image+3',
-                                                                      'https://via.placeholder.com/300x200.png?text=Image+2'],
-                                                     technology_icons=[
-                                                         'https://img.shields.io/badge/Python-white?logo=Python', 'https://img.shields.io/badge/Jupyter-white?logo=Jupyter']),
-                                            xs=12, sm=6, md=4, lg=2
-                                        ),
+                                        # dbc.Col(
+                                        #     new_card(title='Project 3', description='This is a description of project 3',
+                                        #              screenshot_urls=['https://via.placeholder.com/300x200.png?text=Image+3',
+                                        #                               'https://via.placeholder.com/300x200.png?text=Image+2'],
+                                        #              play=False,
+                                        #              source_code='',
+                                        #              technology_icons=[
+                                        #                  'https://img.shields.io/badge/Python-white?logo=Python', 'https://img.shields.io/badge/Jupyter-white?logo=Jupyter']),
+                                        #     xs=12, sm=6, md=4, lg=2
+                                        # ),
                                     ],
                                     style={"display": "flex",
                                            "flex-wrap": "wrap"},
